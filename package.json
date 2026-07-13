@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build": "mintlify export --output export.zip && node scripts/extract-mintlify-export.mjs",
     "dev": "mintlify dev",
     "lint": "mintlify broken-links"
   },
   "devDependencies": {
+    "adm-zip": "^0.6.0",
     "mintlify": "^4.2.144"
   }
 }

@@ -1,4 +1,6 @@
 node_modules
 .mintlify
+out
+export.zip
 .env
 .DS_Store
