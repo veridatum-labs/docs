@@ -1,0 +1,83 @@
+---
+title: "Introduction"
+description: "Privacy-preserving income and payment verification on Stellar"
+---
+
+EarnProof is an open-source protocol for proving income and payment facts without exposing complete wallet history, exact earnings, total balance, unrelated transactions, or other sensitive financial activity.
+
+A worker can connect a Stellar wallet, select qualifying incoming payments, choose a proof type, and generate a signed credential such as:
+
+> This wallet received at least 1,000 USDC per month for the last three months.
+
+A verifier can check the claim without seeing the worker's full financial history.
+
+## How It Works
+
+![Architecture](/assets/diagrams/architecture.svg)
+
+EarnProof combines a web application, backend API, signed credentials, and Soroban contracts.
+
+1. A worker connects Freighter on Stellar testnet.
+2. The backend authenticates the wallet through a signed challenge.
+3. The backend indexes incoming Stellar payments.
+4. The worker classifies qualifying income payments.
+5. The backend evaluates a proof condition and signs a credential.
+6. The worker shares a verification link or QR code.
+7. A verifier checks signature, expiration, revocation, issuer status, and disclosed claim.
+
+## Key Features
+
+- **Selective disclosure** — prove a claim without revealing unrelated transactions.
+- **Stellar-native payments** — start with public testnet payment activity.
+- **Signed credentials** — use deterministic payloads and cryptographic signatures.
+- **Revocation support** — invalidate shared proofs after issuance.
+- **Soroban trust layer** — use issuer and proof registries without storing private income data on-chain.
+- **Open-source architecture** — separate frontend, backend, contracts, SDK, docs, and specification repositories.
+
+## MVP Scope
+
+The first implementation targets:
+
+| Area | Scope |
+| --- | --- |
+| Network | Stellar testnet |
+| Wallet | Freighter |
+| Proofs | Minimum income, recurring income, payment receipt |
+| Credentials | Signed JSON credentials |
+| Contracts | Issuer registry, proof registry, protocol configuration |
+| Verification | Public verification page and machine-readable API response |
+
+## Documentation
+
+### Getting Started
+
+- [Getting Started](getting-started) — run the local stack and understand the repository layout
+- [Roadmap](roadmap) — delivery order and future protocol direction
+
+### Architecture
+
+- [Architecture Overview](architecture/overview) — system components and trust boundaries
+- [Privacy Model](architecture/privacy-model) — what is disclosed and what stays hidden
+- [Credential Lifecycle](architecture/credential-lifecycle) — creation, verification, expiration, and revocation
+- [Data Model](architecture/data-model) — core backend entities
+
+### Guides
+
+- [Wallet Authentication](guides/wallet-authentication) — signed challenge flow
+- [Payment Indexing](guides/payment-indexing) — Stellar payment discovery and normalization
+- [Create an Income Proof](guides/create-income-proof) — proof inputs and disclosure preview
+- [Public Verification](guides/public-verification) — verifier result states
+- [Revocation](guides/revocation) — proof invalidation flow
+
+### Contracts
+
+- [Contracts Overview](contracts/overview) — Soroban trust layer
+- [Protocol Config](contracts/protocol-config) — admin, pause, and schema controls
+- [Issuer Registry](contracts/issuer-registry) — issuer status and metadata
+- [Proof Registry](contracts/proof-registry) — commitments and revocation
+
+### API Reference
+
+- [Endpoints](api-reference/endpoints) — current and planned HTTP endpoints
+- [Types](api-reference/types) — request, response, and credential types
+- [Errors](api-reference/errors) — common error states

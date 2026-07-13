@@ -1,0 +1,47 @@
+---
+title: "SDK Overview"
+description: "Future TypeScript SDK for EarnProof integrations"
+---
+
+The EarnProof SDK will help applications verify credentials, call the API, render verification UI, and subscribe to proof status updates.
+
+## Planned Install
+
+```bash
+npm install @veridatum/earnproof
+```
+
+## Planned Modules
+
+| Module | Purpose |
+| --- | --- |
+| Verification client | Verify proof IDs and credential payloads |
+| API client | Call authenticated EarnProof endpoints |
+| React components | Embed badges, modals, and verification widgets |
+| Schema helpers | Validate credential and proof payloads |
+| Webhook utilities | Verify webhook signatures |
+
+## Example
+
+```typescript
+import { EarnProof } from "@veridatum/earnproof";
+
+const client = new EarnProof({
+  apiUrl: "https://api.earnproof.example/api/v1",
+});
+
+const result = await client.verifyProof("proof_01JXYZ123");
+
+if (result.status === "valid") {
+  console.log(result.claim);
+}
+```
+
+## Design Goals
+
+- Deterministic credential verification
+- Small dependency footprint
+- Browser and Node.js support
+- Strong TypeScript types
+- Safe defaults for public verification
+

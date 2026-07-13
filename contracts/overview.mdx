@@ -1,0 +1,62 @@
+---
+title: "Contracts Overview"
+description: "Soroban trust layer for EarnProof"
+---
+
+EarnProof uses Soroban contracts for compact public status, not for storing private financial data.
+
+## Contracts
+
+| Contract | Responsibility |
+| --- | --- |
+| Protocol Config | Admin, pause state, schema version approval |
+| Issuer Registry | Approved issuer records, issuer status, metadata hashes |
+| Proof Registry | Proof commitments, expiration, revocation status |
+
+## Design Rules
+
+Contracts must not store:
+
+- exact salary,
+- exact payment amount,
+- full wallet history,
+- personal name,
+- email address,
+- employment documents,
+- raw transaction lists,
+- unencrypted personal information.
+
+Contracts may store:
+
+- proof ID hash,
+- commitment hash,
+- issuer address,
+- status,
+- expiration,
+- schema version,
+- timestamp,
+- public metadata hash.
+
+## Backend Relationship
+
+The backend writes to contracts when:
+
+- registering approved issuers,
+- rotating issuer addresses,
+- registering proof commitments,
+- revoking proof commitments,
+- updating protocol schema status.
+
+The backend reads from contracts when:
+
+- checking issuer status,
+- checking proof revocation,
+- checking proof expiration,
+- validating schema availability,
+- confirming deployed contract references.
+
+## Current Repositories
+
+- [Contracts](https://github.com/veridatum-labs/earnproof-contracts)
+- [Backend](https://github.com/veridatum-labs/earnproof-backend)
+

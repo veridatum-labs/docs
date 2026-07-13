@@ -1,0 +1,45 @@
+---
+title: "Issuer Registry"
+description: "Approved issuer records and issuer status on Soroban"
+---
+
+The issuer registry contract tracks which organizations are active EarnProof issuers.
+
+## Responsibilities
+
+- Register approved issuers.
+- Store issuer address.
+- Store issuer metadata hash.
+- Store issuer status.
+- Suspend, reactivate, or revoke issuers.
+- Rotate issuer wallet address.
+- Query issuer validity.
+
+## Functions
+
+```rust
+initialize(admin: Address)
+register_issuer(issuer_id_hash: BytesN<32>, issuer_address: Address, metadata_hash: BytesN<32>)
+update_issuer(issuer_id_hash: BytesN<32>, metadata_hash: BytesN<32>)
+suspend_issuer(issuer_id_hash: BytesN<32>)
+reactivate_issuer(issuer_id_hash: BytesN<32>)
+revoke_issuer(issuer_id_hash: BytesN<32>)
+rotate_issuer_address(issuer_id_hash: BytesN<32>, new_address: Address)
+get_issuer(issuer_id_hash: BytesN<32>) -> IssuerRecord
+get_issuer_by_address(issuer_address: Address) -> IssuerRecord
+is_active_issuer(issuer_id_hash: BytesN<32>) -> bool
+is_active_address(issuer_address: Address) -> bool
+```
+
+## Status Values
+
+| Status | Meaning |
+| --- | --- |
+| Active | Issuer can back proofs or attestations |
+| Suspended | Issuer is temporarily inactive |
+| Revoked | Issuer is permanently invalidated |
+
+## Privacy Boundary
+
+Issuer metadata should be stored off-chain. The contract stores a metadata hash and issuer address only.
+

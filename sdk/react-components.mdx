@@ -1,0 +1,29 @@
+---
+title: "React Components"
+description: "Planned embeddable verification UI components"
+---
+
+EarnProof will provide React components for third-party apps that want to display proof status.
+
+## Verification Badge
+
+```tsx
+<EarnProofBadge proofId="proof_01JXYZ123" />
+```
+
+## Verification Modal
+
+```tsx
+<EarnProofVerificationModal
+  proofId="proof_01JXYZ123"
+  onClose={() => setOpen(false)}
+/>
+```
+
+## Design Requirements
+
+- Clear valid, expired, revoked, and invalid states
+- No hidden transaction data
+- Accessible keyboard navigation
+- Machine-readable status available to parent apps
+

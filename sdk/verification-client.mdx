@@ -1,0 +1,38 @@
+---
+title: "Verification Client"
+description: "Verify EarnProof credentials from TypeScript"
+---
+
+The verification client will support public proof lookup and offline credential payload verification.
+
+## Verify by Proof ID
+
+```typescript
+const result = await client.verifyProof("proof_01JXYZ123");
+```
+
+## Verify Credential Payload
+
+```typescript
+const result = await client.verifyCredential(credentialJson);
+```
+
+## Result Shape
+
+```typescript
+type VerificationResult = {
+  status: "valid" | "expired" | "revoked" | "invalid_signature" | "unknown_proof" | "unverified_issuer";
+  proofId?: string;
+  claim?: Record<string, unknown>;
+  issuer?: {
+    id: string;
+    name: string;
+  };
+  expiresAt?: string;
+};
+```
+
+## Safety
+
+The client should never infer trust beyond what the verification response proves. Self-generated proofs and issuer-backed proofs must remain visually and programmatically distinct.
+

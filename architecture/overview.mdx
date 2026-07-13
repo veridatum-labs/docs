@@ -1,0 +1,66 @@
+---
+title: "Architecture Overview"
+description: "EarnProof system components, responsibilities, and trust boundaries"
+---
+
+EarnProof is a modular Stellar application split across frontend, backend, contracts, and future SDK/specification repositories.
+
+## Components
+
+| Component | Responsibility |
+| --- | --- |
+| Frontend | Wallet connection, worker dashboard, payment classification, proof creation, verifier UI |
+| Backend | Authentication, indexing, proof evaluation, credential signing, verification, revocation |
+| Soroban contracts | Issuer status, proof commitments, revocation status, protocol configuration |
+| SDK | Future client helpers for verification and integration |
+| Specification | Future protocol schemas, signing rules, verification rules, and privacy model |
+
+## Request Flow
+
+```text
+Worker wallet
+  -> Frontend
+  -> Backend auth challenge
+  -> Stellar payment indexing
+  -> Proof evaluation
+  -> Signed credential
+  -> Verification link
+  -> Public verifier
+```
+
+## Trust Boundaries
+
+The frontend is not trusted with secret keys, credential signing keys, or source-of-truth proof evaluation. It presents user choices and submits requests.
+
+The backend is trusted to:
+
+- verify wallet signatures,
+- index Stellar transactions,
+- evaluate proof conditions,
+- sign credentials,
+- enforce revocation,
+- avoid leaking hidden financial data.
+
+Soroban contracts are trusted only for compact public status:
+
+- issuer status,
+- proof commitment existence,
+- proof revocation,
+- schema and protocol configuration.
+
+## Testnet First
+
+The first implementation targets Stellar testnet. Mainnet should wait until:
+
+- contracts have independent review,
+- credential signing and key rotation are hardened,
+- privacy logging restrictions are tested,
+- issuer governance is documented,
+- public verification language is reviewed.
+
+## Related Pages
+
+- [Privacy Model](privacy-model)
+- [Credential Lifecycle](credential-lifecycle)
+- [Data Model](data-model)
+- [Contracts Overview](/contracts/overview)

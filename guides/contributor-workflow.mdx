@@ -1,0 +1,37 @@
+---
+title: "Contributor Workflow"
+description: "How contributors pick up issues and submit changes"
+---
+
+EarnProof issues should be scoped so contributors can complete them independently.
+
+## Issue Format
+
+Each issue should include:
+
+- problem statement,
+- suggested implementation,
+- acceptance criteria,
+- test requirements,
+- relevant files,
+- out-of-scope notes when needed.
+
+## Local Workflow
+
+```bash
+git clone <repo>
+git checkout -b feature/short-description
+# make changes
+# run tests
+git commit -m "Short imperative summary"
+git push origin feature/short-description
+```
+
+## Pull Request Expectations
+
+- Keep changes scoped.
+- Include tests for behavior changes.
+- Update docs when public behavior changes.
+- Avoid unrelated refactors.
+- Do not commit secrets or generated build output.
+

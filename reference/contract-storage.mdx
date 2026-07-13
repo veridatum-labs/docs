@@ -1,0 +1,43 @@
+---
+title: "Contract Storage"
+description: "Storage keys, values, and privacy boundaries for EarnProof contracts"
+---
+
+EarnProof contracts store compact status records only.
+
+## Protocol Config
+
+| Key | Value |
+| --- | --- |
+| `Admin` | Protocol administrator address |
+| `Paused` | Boolean pause state |
+| `ConfigVersion` | Incrementing configuration version |
+| `SchemaVersion(version)` | Boolean schema approval state |
+
+## Issuer Registry
+
+| Key | Value |
+| --- | --- |
+| `Admin` | Registry administrator |
+| `Issuer(issuer_id_hash)` | Issuer record |
+| `AddressIssuer(address)` | Issuer ID hash lookup |
+
+## Proof Registry
+
+| Key | Value |
+| --- | --- |
+| `Admin` | Registry administrator |
+| `IssuerRegistry` | Issuer registry contract address |
+| `ProtocolConfig` | Protocol config contract address |
+| `Proof(proof_id_hash)` | Proof record |
+
+## Forbidden On-Chain Data
+
+- Raw salary
+- Exact payment amount
+- Full wallet history
+- Personal name
+- Email address
+- Employment documents
+- Raw transaction lists
+

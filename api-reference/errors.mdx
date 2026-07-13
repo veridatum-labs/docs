@@ -1,0 +1,44 @@
+---
+title: "Errors"
+description: "Common API and verification error states"
+---
+
+## Authentication Errors
+
+| Error | Meaning |
+| --- | --- |
+| `invalid_wallet` | Stellar public key is malformed |
+| `challenge_expired` | Challenge is no longer valid |
+| `challenge_used` | Challenge was already consumed |
+| `invalid_signature` | Wallet signature does not match challenge |
+| `session_expired` | Bearer session is expired or revoked |
+
+## Payment Errors
+
+| Error | Meaning |
+| --- | --- |
+| `payment_not_found` | Payment does not exist or is not owned by user |
+| `unsupported_asset` | Asset is not configured as eligible |
+| `stellar_unavailable` | Horizon or RPC request failed |
+
+## Proof Errors
+
+| Error | Meaning |
+| --- | --- |
+| `condition_not_satisfied` | Selected payments do not satisfy claim |
+| `proof_expired` | Proof expiration has passed |
+| `proof_revoked` | Proof has been revoked |
+| `issuer_inactive` | Issuer is suspended, revoked, or unknown |
+| `invalid_credential` | Credential payload is malformed or tampered |
+
+## Response Shape
+
+```json
+{
+  "error": {
+    "code": "invalid_signature",
+    "message": "Invalid wallet signature"
+  }
+}
+```
+

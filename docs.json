@@ -1,0 +1,155 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "EarnProof",
+  "theme": "maple",
+  "logo": {
+    "dark": "/assets/images/logo-white.svg",
+    "light": "/assets/images/logo-black.svg"
+  },
+  "favicon": "/assets/images/logo-black.svg",
+  "colors": {
+    "primary": "#22d3ee",
+    "light": "#67e8f9",
+    "dark": "#0891b2"
+  },
+  "search": {
+    "analytics": true,
+    "synonyms": [
+      ["proof", "credential"],
+      ["income", "payment"],
+      ["Freighter", "Stellar wallet"],
+      ["Soroban", "Stellar smart contract"],
+      ["revocation", "revoke"],
+      ["issuer", "employer"]
+    ],
+    "boosts": [
+      { "page": "getting-started", "weight": 3 },
+      { "group": "Guides", "weight": 2 },
+      { "group": "API Reference", "weight": 1 }
+    ]
+  },
+  "font": {
+    "headings": {
+      "family": "Space Grotesk",
+      "weight": 600
+    },
+    "body": {
+      "family": "Inter"
+    }
+  },
+  "layout": "sidenav",
+  "sidebar": {
+    "items": "border"
+  },
+  "topbar": {
+    "style": "default"
+  },
+  "rounded": "none",
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/veridatum-labs"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "View Demo",
+    "url": "https://github.com/veridatum-labs/earnproof-frontend"
+  },
+  "tabs": [
+    {
+      "name": "SDK",
+      "url": "sdk"
+    },
+    {
+      "name": "Guides",
+      "url": "guides"
+    },
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["introduction", "getting-started", "roadmap"]
+          },
+          {
+            "group": "Architecture",
+            "pages": [
+              "architecture/overview",
+              "architecture/privacy-model",
+              "architecture/credential-lifecycle",
+              "architecture/data-model"
+            ]
+          },
+          {
+            "group": "Contracts",
+            "pages": [
+              "contracts/overview",
+              "contracts/protocol-config",
+              "contracts/issuer-registry",
+              "contracts/proof-registry",
+              "reference/contract-storage"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDK",
+        "groups": [
+          {
+            "group": "SDK",
+            "pages": ["sdk/overview", "sdk/verification-client", "sdk/react-components"]
+          },
+          {
+            "group": "Schemas",
+            "pages": ["sdk/credential-schema", "sdk/proof-types"]
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/wallet-authentication",
+              "guides/payment-indexing",
+              "guides/create-income-proof",
+              "guides/public-verification",
+              "guides/revocation",
+              "guides/issuer-onboarding",
+              "guides/privacy-best-practices",
+              "guides/local-development"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "guides/testnet-deployment",
+              "guides/security-checklist",
+              "guides/contributor-workflow"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Reference",
+            "pages": ["api-reference/endpoints", "api-reference/types", "api-reference/errors"]
+          }
+        ]
+      }
+    ]
+  },
+  "footerSocials": {
+    "github": "https://github.com/veridatum-labs"
+  }
+}

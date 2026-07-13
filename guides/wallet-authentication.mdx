@@ -1,0 +1,52 @@
+---
+title: "Wallet Authentication"
+description: "Authenticate a Stellar wallet with an EarnProof challenge"
+---
+
+EarnProof uses wallet signatures instead of passwords.
+
+## Flow
+
+1. Frontend detects Freighter.
+2. Frontend requests a challenge from the backend.
+3. Backend creates a one-time message with wallet, nonce, domain, network, and expiration.
+4. Worker signs the message.
+5. Frontend submits challenge ID, wallet address, and signature.
+6. Backend verifies the signature and returns a bearer session.
+
+## Request Challenge
+
+```http
+POST /api/v1/auth/challenge
+Content-Type: application/json
+```
+
+```json
+{
+  "walletAddress": "G..."
+}
+```
+
+## Verify Challenge
+
+```http
+POST /api/v1/auth/verify
+Content-Type: application/json
+```
+
+```json
+{
+  "challengeId": "challenge_123",
+  "walletAddress": "G...",
+  "signature": "base64-signature"
+}
+```
+
+## Security Rules
+
+- Challenges expire quickly.
+- Nonces are one-time use.
+- Signatures are never logged.
+- Challenge messages include network passphrase.
+- Sessions should be revocable before production use.
+

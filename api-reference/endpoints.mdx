@@ -1,0 +1,70 @@
+---
+title: "HTTP Endpoints"
+description: "EarnProof backend API endpoint groups"
+---
+
+All backend endpoints are versioned under:
+
+```text
+/api/v1
+```
+
+## Authentication
+
+```http
+POST /api/v1/auth/challenge
+POST /api/v1/auth/verify
+POST /api/v1/auth/logout
+GET  /api/v1/auth/session
+```
+
+## Payments
+
+```http
+GET   /api/v1/payments
+GET   /api/v1/payments/:id
+PATCH /api/v1/payments/:id/classification
+POST  /api/v1/payments/sync
+```
+
+## Proofs
+
+```http
+POST   /api/v1/proofs
+GET    /api/v1/proofs
+GET    /api/v1/proofs/:id
+POST   /api/v1/proofs/:id/revoke
+GET    /api/v1/proofs/:id/activity
+GET    /api/v1/proofs/:id/credential
+```
+
+## Public Verification
+
+```http
+GET  /api/v1/verification/:proofId
+POST /api/v1/verification/credential
+```
+
+## Issuers
+
+```http
+POST /api/v1/issuers/apply
+GET  /api/v1/issuers/:id
+POST /api/v1/issuers/:id/attestations
+POST /api/v1/issuers/:id/rotate-key
+POST /api/v1/issuers/:id/revoke-attestation
+```
+
+## Developer
+
+```http
+POST   /api/v1/api-keys
+GET    /api/v1/api-keys
+DELETE /api/v1/api-keys/:id
+
+POST   /api/v1/webhooks
+GET    /api/v1/webhooks
+PATCH  /api/v1/webhooks/:id
+DELETE /api/v1/webhooks/:id
+```
+

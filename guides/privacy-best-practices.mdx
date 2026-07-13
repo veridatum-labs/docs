@@ -1,0 +1,37 @@
+---
+title: "Privacy Best Practices"
+description: "Build EarnProof integrations without leaking sensitive financial data"
+---
+
+EarnProof integrations should follow strict data minimization.
+
+## Do
+
+- Show disclosure previews before proof creation.
+- Hash public wallet references in credentials.
+- Redact exact amounts from logs.
+- Store API keys as hashes.
+- Store webhook secrets securely.
+- Use short-lived authentication challenges.
+- Keep public verification responses minimal.
+
+## Avoid
+
+- Logging raw wallet signatures.
+- Sending full transaction history to verifiers.
+- Storing exact salary on-chain.
+- Storing raw payment lists in credentials.
+- Treating self-generated proofs as employer-verified income.
+- Claiming EarnProof guarantees creditworthiness.
+
+## Verification UX
+
+Always distinguish:
+
+- valid,
+- expired,
+- revoked,
+- invalid signature,
+- unverified issuer,
+- unknown proof.
+

@@ -1,0 +1,63 @@
+---
+title: "Data Model"
+description: "Core backend entities used by EarnProof"
+---
+
+The backend data model is designed to support wallet authentication, payment indexing, proof generation, issuer management, verification, and auditability.
+
+## Core Entities
+
+| Entity | Purpose |
+| --- | --- |
+| User | Wallet-backed account |
+| WalletChallenge | One-time authentication challenge |
+| Organization | Issuer or developer organization |
+| Issuer | Registered payment attestation source |
+| SupportedAsset | Approved Stellar asset configuration |
+| Payment | Normalized incoming Stellar payment |
+| TrustedSource | User-approved income source |
+| Proof | Generated proof record |
+| ProofClaim | Evaluated claim and disclosure policy |
+| Attestation | Issuer-backed payment or employment statement |
+| VerificationEvent | Privacy-preserving verification log |
+| ApiKey | Developer API credential hash |
+| Webhook | Developer webhook endpoint |
+| AuditLog | Security-sensitive activity record |
+
+## Payment Classification
+
+Payments can be classified as:
+
+- income,
+- reimbursement,
+- personal transfer,
+- unknown,
+- excluded.
+
+Proof evaluators should use eligible income payments unless a proof type explicitly allows another source.
+
+## Proof Status
+
+Proof records can be:
+
+- active,
+- expired,
+- revoked,
+- invalid.
+
+## Audit Events
+
+Audit logs should capture:
+
+- authentication verification,
+- payment classification changes,
+- proof creation,
+- proof revocation,
+- issuer approval,
+- issuer suspension,
+- API key creation,
+- webhook changes,
+- admin configuration changes.
+
+Audit logs should not include raw signatures, exact income values, full credentials, API keys, or webhook secrets.
+

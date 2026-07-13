@@ -1,0 +1,48 @@
+---
+title: "Protocol Config"
+description: "Protocol administrator, pause state, and schema version controls"
+---
+
+The protocol configuration contract stores global protocol status.
+
+## Responsibilities
+
+- Store protocol administrator.
+- Store pause state.
+- Approve credential schema versions.
+- Deprecate schema versions.
+- Expose configuration version.
+
+## Functions
+
+```rust
+initialize(admin: Address)
+get_admin() -> Address
+set_admin(new_admin: Address)
+pause()
+unpause()
+is_paused() -> bool
+approve_schema_version(version: u32)
+deprecate_schema_version(version: u32)
+is_schema_version_approved(version: u32) -> bool
+get_config_version() -> u32
+```
+
+## Authorization
+
+Only the configured admin can:
+
+- set a new admin,
+- pause the protocol,
+- unpause the protocol,
+- approve schema versions,
+- deprecate schema versions.
+
+## Backend Usage
+
+The backend should check:
+
+- protocol is not paused before sensitive write operations,
+- schema version is approved before registering a proof commitment,
+- config version when caching contract state.
+

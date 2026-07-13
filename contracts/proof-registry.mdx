@@ -1,0 +1,55 @@
+---
+title: "Proof Registry"
+description: "Proof commitments, expiration, and revocation status"
+---
+
+The proof registry stores public commitment status for EarnProof credentials.
+
+## Responsibilities
+
+- Register proof commitments.
+- Store proof status.
+- Store expiration.
+- Revoke proofs.
+- Query proof validity.
+- Prevent duplicate proof registration.
+
+## Functions
+
+```rust
+initialize(admin: Address, issuer_registry: Address, protocol_config: Address)
+register_proof(
+  proof_id_hash: BytesN<32>,
+  commitment_hash: BytesN<32>,
+  issuer_address: Address,
+  schema_version: u32,
+  expires_at: u64
+)
+revoke_proof(proof_id_hash: BytesN<32>)
+admin_revoke_proof(proof_id_hash: BytesN<32>)
+get_proof(proof_id_hash: BytesN<32>) -> ProofRecord
+is_valid_proof(proof_id_hash: BytesN<32>) -> bool
+is_revoked(proof_id_hash: BytesN<32>) -> bool
+get_issuer_registry() -> Address
+get_protocol_config() -> Address
+```
+
+## Validity Rules
+
+A proof is valid only when:
+
+- it exists,
+- it is active,
+- it has not expired,
+- it has not been revoked.
+
+Future contract work should also enforce:
+
+- active issuer status,
+- approved schema version,
+- unpaused protocol configuration.
+
+## Commitment Hash
+
+The commitment hash should be derived from a canonical credential payload, excluding mutable fields such as verification event count.
+

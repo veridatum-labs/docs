@@ -1,0 +1,39 @@
+---
+title: "Revocation"
+description: "Invalidate proofs after sharing"
+---
+
+Revocation lets workers and authorized issuers invalidate proofs after issuance.
+
+## Backend Revocation
+
+```http
+POST /api/v1/proofs/:id/revoke
+Authorization: Bearer <token>
+```
+
+Expected behavior:
+
+1. Confirm requester can revoke the proof.
+2. Set backend proof status to revoked.
+3. Submit Soroban revocation when a proof commitment exists.
+4. Return revoked status from public verification.
+5. Send webhook notifications for registered integrations.
+
+## Contract Revocation
+
+The proof registry supports:
+
+```rust
+revoke_proof(proof_id_hash: BytesN<32>)
+admin_revoke_proof(proof_id_hash: BytesN<32>)
+```
+
+## Verification Behavior
+
+Revoked proofs should never verify as valid, even if:
+
+- the signature is correct,
+- the proof has not expired,
+- the issuer is active.
+

@@ -1,0 +1,50 @@
+---
+title: "Testnet Deployment"
+description: "Deploy EarnProof services to Stellar testnet"
+---
+
+EarnProof should remain testnet-only until security review is complete.
+
+## Deployment Order
+
+1. Deploy protocol config contract.
+2. Deploy issuer registry contract.
+3. Deploy proof registry contract.
+4. Initialize contracts.
+5. Approve schema version `1`.
+6. Register the initial EarnProof issuer.
+7. Deploy backend with contract IDs.
+8. Deploy frontend with backend URL.
+
+## Contract Manifest
+
+```json
+{
+  "network": "stellar-testnet",
+  "contracts": {
+    "protocolConfig": "CD...",
+    "issuerRegistry": "CD...",
+    "proofRegistry": "CD..."
+  },
+  "schemaVersions": [1]
+}
+```
+
+## Backend Environment
+
+```env
+STELLAR_NETWORK=testnet
+STELLAR_HORIZON_URL=https://horizon-testnet.stellar.org
+STELLAR_NETWORK_PASSPHRASE=Test SDF Network ; September 2015
+```
+
+## Verification
+
+Before announcing a demo, confirm:
+
+- frontend loads,
+- backend health passes,
+- payment sync can reach Horizon,
+- contracts are initialized,
+- verification endpoint returns safe public responses.
+

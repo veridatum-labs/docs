@@ -1,0 +1,62 @@
+---
+title: "API Types"
+description: "Common request and response types"
+---
+
+## Challenge Request
+
+```typescript
+type CreateChallengeRequest = {
+  walletAddress: string;
+};
+```
+
+## Challenge Response
+
+```typescript
+type CreateChallengeResponse = {
+  id: string;
+  message: string;
+  expiresAt: string;
+};
+```
+
+## Verify Challenge Request
+
+```typescript
+type VerifyChallengeRequest = {
+  challengeId: string;
+  walletAddress: string;
+  signature: string;
+};
+```
+
+## Payment Classification
+
+```typescript
+type PaymentClassification =
+  | "INCOME"
+  | "REIMBURSEMENT"
+  | "PERSONAL_TRANSFER"
+  | "UNKNOWN"
+  | "EXCLUDED";
+```
+
+## Verification Status
+
+```typescript
+type VerificationStatus =
+  | "VALID"
+  | "EXPIRED"
+  | "REVOKED"
+  | "INVALID_SIGNATURE"
+  | "UNKNOWN_PROOF"
+  | "UNVERIFIED_ISSUER";
+```
+
+## Proof Status
+
+```typescript
+type ProofStatus = "ACTIVE" | "EXPIRED" | "REVOKED" | "INVALID";
+```
+

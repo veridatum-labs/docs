@@ -1,0 +1,33 @@
+---
+title: "Issuer Onboarding"
+description: "Register organizations that can create higher-trust attestations"
+---
+
+Issuers are organizations that can back payment or employment claims.
+
+## Issuer Application
+
+An organization submits:
+
+- display name,
+- website,
+- contact details,
+- public metadata,
+- issuer Stellar address.
+
+## Admin Review
+
+Maintainers review issuer applications and decide whether to approve, suspend, reactivate, or revoke issuers.
+
+## On-Chain Registration
+
+Approved issuers can be registered in the issuer registry:
+
+```rust
+register_issuer(issuer_id_hash, issuer_address, metadata_hash)
+```
+
+## Trust Levels
+
+Issuer-backed proofs should be visually distinguished from self-generated proofs. Verifiers should understand what the issuer did and did not attest.
+

@@ -1,0 +1,77 @@
+---
+title: "Privacy Model"
+description: "What EarnProof reveals, hides, stores, and avoids"
+---
+
+EarnProof is designed around selective disclosure. A proof should reveal a claim result, not a worker's complete financial life.
+
+## Public Verification Should Reveal
+
+- Proof status
+- Disclosed claim
+- Proof type
+- Issuer or trust level
+- Network
+- Asset
+- Creation date
+- Expiration date
+- Revocation state
+
+## Public Verification Should Not Reveal
+
+- Full wallet history
+- Exact total income unless explicitly disclosed
+- Total wallet balance
+- Unrelated payments
+- Spending activity
+- Hidden sender addresses
+- Hidden source transactions
+- Raw authentication signatures
+
+## Backend Storage
+
+The backend may need sensitive data to evaluate proof conditions. Storage should minimize exposure:
+
+| Data | Handling |
+| --- | --- |
+| Wallet address | Stored for authenticated user account |
+| Public proof wallet reference | Hash |
+| Payment amount | Encrypted or protected where possible |
+| API keys | Hash only |
+| Webhook secrets | Hash or encrypted value |
+| Verification IP | Hash or fingerprint |
+
+## On-Chain Storage
+
+Contracts must not store personal financial data. Store only:
+
+- proof ID hash,
+- commitment hash,
+- issuer address,
+- status,
+- expiration,
+- schema version,
+- timestamp,
+- public metadata hash.
+
+## Trust Levels
+
+| Level | Description |
+| --- | --- |
+| Self-generated | Based on user-selected public transactions and signed by EarnProof |
+| Source-verified | Payment source is known or approved |
+| Issuer-backed | Registered issuer signs or attests to the payment relationship |
+| Cryptographic privacy | Future range or zero-knowledge proof mechanisms |
+
+## Logging Restrictions
+
+Logs must not contain:
+
+- secret keys,
+- full credentials,
+- exact income values,
+- raw signatures,
+- complete wallet transaction history,
+- webhook secrets,
+- API keys.
+

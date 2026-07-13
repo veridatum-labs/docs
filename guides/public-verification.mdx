@@ -1,0 +1,52 @@
+---
+title: "Public Verification"
+description: "Verify an EarnProof credential without exposing hidden payment data"
+---
+
+Public verification lets a verifier check a claim from a link or credential payload.
+
+## Verification Endpoint
+
+```http
+GET /api/v1/verification/:proofId
+```
+
+## Credential Verification Endpoint
+
+```http
+POST /api/v1/verification/credential
+Content-Type: application/json
+```
+
+## Status Values
+
+| Status | Meaning |
+| --- | --- |
+| `valid` | Credential is signed, active, and not expired |
+| `expired` | Credential expiration has passed |
+| `revoked` | Credential was revoked |
+| `invalid_signature` | Signature does not match payload |
+| `unknown_proof` | Proof ID is not known |
+| `unverified_issuer` | Issuer cannot be confirmed |
+
+## Public Response Should Include
+
+- result status,
+- disclosed claim,
+- proof type,
+- issuer,
+- trust level,
+- network,
+- asset,
+- created date,
+- expiration date,
+- revocation status.
+
+## Public Response Should Not Include
+
+- hidden payment sources,
+- unrelated transactions,
+- complete wallet history,
+- raw signatures,
+- full backend audit metadata.
+

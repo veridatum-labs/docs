@@ -1,0 +1,47 @@
+---
+title: "Payment Indexing"
+description: "Fetch and normalize incoming Stellar testnet payments"
+---
+
+Payment indexing turns Stellar payment operations into EarnProof payment records.
+
+## Flow
+
+1. Worker authenticates.
+2. Worker triggers payment sync.
+3. Backend queries Horizon for incoming payments.
+4. Backend normalizes operations.
+5. Backend checks supported asset configuration.
+6. Backend upserts payments by operation ID.
+
+## Sync Endpoint
+
+```http
+POST /api/v1/payments/sync
+Authorization: Bearer <token>
+```
+
+## Normalized Fields
+
+| Field | Description |
+| --- | --- |
+| `operationId` | Stellar operation ID |
+| `stellarTransactionHash` | Transaction hash |
+| `sourceAddress` | Sender address |
+| `destinationAddress` | Worker wallet |
+| `assetCode` | XLM or issued asset code |
+| `assetIssuer` | Issuer for non-native assets |
+| `occurredAt` | Operation timestamp |
+
+## Classification
+
+Workers can classify payments as:
+
+- income,
+- reimbursement,
+- personal transfer,
+- unknown,
+- excluded.
+
+Only eligible income payments should be used by income proof evaluators.
+

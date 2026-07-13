@@ -1,0 +1,23 @@
+<svg width="960" height="420" viewBox="0 0 960 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="420" fill="#020617"/>
+  <rect x="48" y="74" width="184" height="96" rx="8" fill="#0F172A" stroke="#22D3EE"/>
+  <text x="88" y="116" fill="#F8FAFC" font-family="Inter, Arial" font-size="18" font-weight="700">Frontend</text>
+  <text x="76" y="142" fill="#CBD5E1" font-family="Inter, Arial" font-size="13">Wallet, proofs, verification</text>
+  <rect x="388" y="74" width="184" height="96" rx="8" fill="#0F172A" stroke="#22D3EE"/>
+  <text x="438" y="116" fill="#F8FAFC" font-family="Inter, Arial" font-size="18" font-weight="700">Backend</text>
+  <text x="416" y="142" fill="#CBD5E1" font-family="Inter, Arial" font-size="13">Index, sign, verify</text>
+  <rect x="728" y="74" width="184" height="96" rx="8" fill="#0F172A" stroke="#22D3EE"/>
+  <text x="780" y="116" fill="#F8FAFC" font-family="Inter, Arial" font-size="18" font-weight="700">Stellar</text>
+  <text x="758" y="142" fill="#CBD5E1" font-family="Inter, Arial" font-size="13">Payments and Soroban</text>
+  <rect x="388" y="250" width="184" height="96" rx="8" fill="#0F172A" stroke="#67E8F9"/>
+  <text x="430" y="292" fill="#F8FAFC" font-family="Inter, Arial" font-size="18" font-weight="700">Credential</text>
+  <text x="420" y="318" fill="#CBD5E1" font-family="Inter, Arial" font-size="13">Signed selective claim</text>
+  <path d="M232 122H388" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M572 122H728" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M480 170V250" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8V0Z" fill="#64748B"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,52 @@
+---
+title: "Local Development"
+description: "Run frontend, backend, docs, and contracts locally"
+---
+
+## Frontend
+
+```bash
+cd earnproof-frontend
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+## Backend
+
+```bash
+cd earnproof-backend
+npm install
+cp .env.example .env
+docker compose up -d
+npm run prisma:generate
+npm run prisma:migrate
+npm run start:dev
+```
+
+## Contracts
+
+```bash
+cd earnproof-contracts
+cargo fmt --all --check
+cargo test
+cargo build
+```
+
+## Docs
+
+```bash
+cd docs
+npm install
+npm run dev
+```
+
+## Ports
+
+| Service | URL |
+| --- | --- |
+| Frontend | `http://localhost:3000` |
+| Backend | `http://localhost:4000/api/v1` |
+| Swagger | `http://localhost:4000/docs` |
+| Docs | Mintlify local URL |
+

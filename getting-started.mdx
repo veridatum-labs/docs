@@ -1,0 +1,118 @@
+---
+title: "Getting Started"
+description: "Run EarnProof locally and understand the repository layout"
+---
+
+EarnProof is split into separate repositories under the `veridatum-labs` GitHub organization.
+
+## Repositories
+
+| Repository | Responsibility |
+| --- | --- |
+| `earnproof-frontend` | Next.js app for workers, verifiers, issuers, admins, and developers |
+| `earnproof-backend` | NestJS API for auth, indexing, proof evaluation, credential signing, and verification |
+| `earnproof-contracts` | Soroban contracts for issuer status, proof commitments, revocation, and protocol config |
+| `docs` | Product, API, architecture, guide, and contract documentation |
+| `earnproof-sdk` | Future TypeScript SDK |
+| `earnproof-specification` | Future formal credential and proof standard |
+
+## Prerequisites
+
+- Node.js 24+
+- npm 11+
+- Rust 1.93+
+- Cargo
+- Docker Desktop
+- Freighter wallet
+- Stellar testnet account
+
+## Frontend
+
+```bash
+git clone https://github.com/veridatum-labs/earnproof-frontend.git
+cd earnproof-frontend
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Default URL:
+
+```text
+http://localhost:3000
+```
+
+## Backend
+
+```bash
+git clone https://github.com/veridatum-labs/earnproof-backend.git
+cd earnproof-backend
+npm install
+cp .env.example .env
+docker compose up -d
+npm run prisma:generate
+npm run prisma:migrate
+npm run start:dev
+```
+
+Default API:
+
+```text
+http://localhost:4000/api/v1
+```
+
+Health check:
+
+```text
+GET http://localhost:4000/api/v1/health
+```
+
+Swagger:
+
+```text
+http://localhost:4000/docs
+```
+
+## Contracts
+
+```bash
+git clone https://github.com/veridatum-labs/earnproof-contracts.git
+cd earnproof-contracts
+cargo build
+cargo test
+```
+
+## Docs
+
+```bash
+git clone https://github.com/veridatum-labs/docs.git
+cd docs
+npm install
+npm run dev
+```
+
+## Local Verification Checklist
+
+Run these before opening a pull request:
+
+```bash
+# Frontend
+npm run lint
+npm run build
+
+# Backend
+npm run test -- --runInBand
+npm run build
+
+# Contracts
+cargo fmt --all --check
+cargo test
+cargo build
+```
+
+## Next Steps
+
+- [Wallet Authentication](guides/wallet-authentication)
+- [Payment Indexing](guides/payment-indexing)
+- [Create an Income Proof](guides/create-income-proof)
+- [Contracts Overview](contracts/overview)
