@@ -3,10 +3,10 @@
   "name": "EarnProof",
   "theme": "maple",
   "logo": {
-    "dark": "/assets/images/logo-white.svg",
-    "light": "/assets/images/logo-black.svg"
+    "dark": "/assets/images/logo.svg",
+    "light": "/assets/images/logo.svg"
   },
-  "favicon": "/assets/images/logo-black.svg",
+  "favicon": "/assets/images/logo.svg",
   "colors": {
     "primary": "#22d3ee",
     "light": "#67e8f9",
